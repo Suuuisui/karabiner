@@ -46,7 +46,7 @@
                         "manipulators": [
                             {
                                 "type": "basic",
-                                "description": "左⌘を単押し→Backspace（旧 JIS の英数キー位置）",
+                                "description": "左⌘: 単押し→Backspace / ⌘だけを長押し→Backspace 連打 / 他キーと同時→普通の⌘",
                                 "from": {
                                     "key_code": "left_command",
                                     "modifiers": {
@@ -68,7 +68,7 @@
                                 ],
                                 "parameters": {
                                     "basic.to_if_alone_timeout_milliseconds": 250,
-                                    "basic.to_if_held_down_threshold_milliseconds": 150
+                                    "basic.to_if_held_down_threshold_milliseconds": 400
                                 },
                                 "conditions": [
                                     {
@@ -78,6 +78,12 @@
                                                 "is_built_in_keyboard": true
                                             }
                                         ]
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "repeat": true
                                     }
                                 ]
                             },
